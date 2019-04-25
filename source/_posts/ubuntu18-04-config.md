@@ -42,6 +42,8 @@ tags:
    sudo apt-get install name
    ```
 
+<!--more-->
+
 * 打开**设置**，配置一些基本的设置
 
 * 一些常用的命令
