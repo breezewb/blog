@@ -80,3 +80,10 @@ theme: next
 deploy:
   type: git
   repo: git@github.com:breezewb/blog.git
+
+# search
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
