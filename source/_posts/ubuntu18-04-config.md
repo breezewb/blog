@@ -388,6 +388,27 @@ FTP客户端
 sudo apt-get install filezilla
 ```
 
+### Anocanda
+
+[官网下载](https://www.anaconda.com/distribution/)对应版本，终端运行：
+
+```bash
+# 路径替换为下载文件的路径
+bash ~/Downloads/Anaconda3-2019.03-Linux-x86_64.sh
+```
+
+配置zsh运行conda命令：
+
+```bash
+conda init zsh
+```
+
+更新所有包：
+
+```bash
+conda upgrade --all
+```
+
 ### 深度截图
 
 应用商店搜索安装，设置全局快捷键
