@@ -16,27 +16,27 @@ tags:
 
 * 打开**软件和更新**，选择**阿里云服务器**或者**中国服务器**，然后更新系统
 
-   ```bash
+   ```shell
    sudo apt-get update
    sudo apt-get upgrade
    ```
 
    > 如果更新遇到找不到PGK秘钥等问题，在软件和更新中去除相应的PPA源，或者删除`/etc/apt/sources.list.d/`目录中的源文件，还可以在终端执行：
 
-   ```bash
+   ```shell
    sudo add-apt-repository -r ppa:<ppa_name>
    ```
 
    > 先安装python-software-properties 才能使用 add-apt-repository
 
-   ```bash
+   ```shell
    sudo apt-get install python-software-properties
    sudo apt-get install software-properties-common
    ```
 
    > 通过PPA安装软件具体方式：
 
-   ```bash
+   ```shell
    sudo add-apt-repository ppa:<ppa_name>
    sudo apt-get update
    sudo apt-get install name
@@ -50,13 +50,13 @@ tags:
 
    解压
 
-   ```bash
+   ```shell
    sudo tar -zxvf [压缩文件名] [解压到哪]
    ```
 
    修复依赖
 
-   ```bash
+   ```shell
    sudo apt-get install -f
    ```
 
@@ -64,7 +64,7 @@ tags:
 
 * gnome桌面软件添加启动图标的方法，在`～/.local/share/applications`目录下新建`.desktop`文件，加入以下内容编辑修改
 
-   ```bash
+   ```shell
    [Desktop Entry]
    Version=1.0
    Name=postman
@@ -83,7 +83,7 @@ tags:
 
 ### 安装gnome-tweak-tool
 
-```bash
+```shell
 sudo apt-get install gnome-tweak-tool
 ```
 
@@ -91,7 +91,7 @@ gnome-tweak-tool用于配置Gnome桌面，字体、主题、开机启动程序�
 
 ### 安装gnome-shell-extension
 
-```bash
+```shell
 sudo apt-get install gnome-shell-extensions
 ```
 
@@ -161,7 +161,7 @@ gnome-shell-extension用于在Chrome、Firefox中安装gnome扩展
 
 ### 安装Chrome
 
-```bash
+```shell
 # 1、将下载源加入到系统的源列表（方便更新）
 sudo wget https://repo.fdzh.org/chrome/google-chrome.list -P /etc/apt/sources.list.d/
 # 2、导入谷歌软件的公钥，用于对下载软件进行验证。
@@ -176,43 +176,43 @@ sudo apt-get install google-chrome-stable
 
 1. 卸载ibus
 
-   ```bash
+   ```shell
    sudo apt-get autoremove ibus
    ```
 
 2. 清除ibus配置
 
-   ```bash
+   ```shell
    sudo apt-get purge ibus
    ```
 
 3. 卸载顶部面板任务栏上的键盘指示
 
-   ```bash
+   ```shell
    sudo apt-get remove indicator-keyboard
    ```
 
 4. 安装fcitx输入法框架
 
-   ```bash
+   ```shell
    sudo apt install fcitx-table-wbpy fcitx-config-gtk
    ```
 
 5. 切换为fcitx输入法
 
-   ```bash
+   ```shell
    im-config -n fcitx
    ```
 
 6. [官网](https://pinyin.sogou.com/linux/?r=pinyin)下载搜狗输入法并安装
 
-   ```bash
+   ```shell
    sudo dpkg -i sogoupinyin_***_amd64.deb
    ```
 
 7. 修复损坏缺少的包
 
-   ```bash
+   ```shell
    sudo apt-get install -f
    ```
 
@@ -222,7 +222,7 @@ sudo apt-get install google-chrome-stable
 
 1. 卸载libreoffice
 
-   ```bash
+   ```shell
    sudo apt-get remove --purge libreoffice*
    ```
 
@@ -230,12 +230,12 @@ sudo apt-get install google-chrome-stable
 
    > 安装`wps-office-fonts_1.0_all.deb`依然提示缺少字体解决办法：下载字体包`wps_symbol_fonts.zip`并解压到`/usr/share/fonts/`目录下
    >
-   > ```bash
+   > ```shell
    > sudo unzip wps_symbol_fonts.zip -d /usr/share/fonts/wps-office
    > ```
    > 执行:
    > 
-   > ```bash
+   > ```shell
    > sudo mkfontscale
    >sudo mkfontdir
    > sudo fc-cache
@@ -251,7 +251,7 @@ sudo apt-get install google-chrome-stable
 
 1. apt方式安装jdk8：
 
-   ```bash
+   ```shell
    sudo add-apt-repository ppa:webupd8team/java
    sudo apt-get update
    sudo apt-get install oracle-java8-installer
@@ -259,7 +259,7 @@ sudo apt-get install google-chrome-stable
 
    切换java版本
 
-   ```bash
+   ```shell
    sudo update-java-alternatives -s java-8-oracle
    ```
 
@@ -267,7 +267,7 @@ sudo apt-get install google-chrome-stable
 
    解压之后需要配置环境变量，在`/etc/profile.d`目录下新建一个jdk.sh，加入以下内容
 
-   ```bash
+   ```shell
    export JAVA_HOME=解压文件路径
    export JRE_HOME=${JAVA_HOME}/jre
    export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
@@ -278,7 +278,7 @@ sudo apt-get install google-chrome-stable
 
 一款类似于Mac Spotlight的软件
 
-```bash
+```shell
 sudo add-apt-repository ppa:noobslab/macbuntu
 sudo apt-get update
 sudo apt-get install albert
@@ -292,7 +292,7 @@ sudo apt-get install albert
 
 一个应用程序启动器，比gnome的启动器流畅，没什么卵用
 
-```bash
+```shell
 sudo add-apt-repository ppa:noobslab/macbuntu
 sudo apt-get update
 sudo apt-get install slingscold
@@ -304,7 +304,7 @@ sudo apt-get install slingscold
 
 下拉式终端
 
-```bash
+```shell
 sudo apt-get install guake-indicator
 sudo apt-get install guake
 ```
@@ -321,7 +321,7 @@ sudo apt-get install guake
 
 应用商店搜索安装或者：
 
-```bash
+```shell
 sudo snap install electronic-wechat
 ```
 
@@ -329,13 +329,13 @@ sudo snap install electronic-wechat
 
 1. apt安装
 
-   ```bash
+   ```shell
    sudo apt-get install golang-go
    ```
 
    > 觉得版本比较旧可以导入PPA安装
    >
-   > ```bash
+   > ```shell
    > sudo add-apt-repository ppa:longsleep/golang-backports
    > sudo apt-get update
    > sudo apt-get install golang-go
@@ -345,13 +345,13 @@ sudo snap install electronic-wechat
 
    直接应用商店搜索安装或者：
 
-   ```bash
+   ```shell
    sudo snap install --classic go
    ```
 
 3. 使用官方安装程序安装
 
-   ```bash
+   ```shell
    wget https://storage.googleapis.com/golang/getgo/installer_linux
    chmod +x ./installer_linux
    ./installer_linux
@@ -359,7 +359,7 @@ sudo snap install electronic-wechat
 
 4. 官网下载压缩包，解压后设置环境变量，`/etc/profile.d/`目录下新建golang.sh，加入：
 
-   ```bash
+   ```shell
    #GOROOT为安装路径
    export GOROOT=/opt/go
    export PATH=$PATH:$GOROOT/bin
@@ -369,7 +369,7 @@ sudo snap install electronic-wechat
 
 markdown编辑器
 
-```bash
+```shell
 # or run:
 # sudo apt-key adv --keyserver keyserver.ubuntu.com--recv-keys BA300B7755AFCFAE
 wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
@@ -384,7 +384,7 @@ sudo apt-get install typora
 
 FTP客户端
 
-```bash
+```shell
 sudo apt-get install filezilla
 ```
 
@@ -392,20 +392,20 @@ sudo apt-get install filezilla
 
 [官网下载](https://www.anaconda.com/distribution/)对应版本，终端运行：
 
-```bash
+```shell
 # 路径替换为下载文件的路径
 bash ~/Downloads/Anaconda3-2019.03-Linux-x86_64.sh
 ```
 
 配置zsh运行conda命令：
 
-```bash
+```shell
 conda init zsh
 ```
 
 更新所有包：
 
-```bash
+```shell
 conda upgrade --all
 ```
 
@@ -437,7 +437,7 @@ vscode、postman、dbeaver，官网下载安装
 
 一些主题需要的依赖
 
-```bash
+```shell
 sudo apt-get install gtk2-engines-murrine gtk2-engines-pixbuf
 ```
 
