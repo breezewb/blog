@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>git配置代理</title>
+    <url>/blog/2019/11/11/git%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<h1 id="一般代理"><a href="#一般代理" class="headerlink" title="一般代理"></a>一般代理</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global https.proxy http://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line">npm config delete proxy</span><br><span class="line">git config --global http.proxy <span class="string">'socks5://127.0.0.1:1080'</span></span><br><span class="line">git config --global https.proxy <span class="string">'socks5://127.0.0.1:1080'</span></span><br></pre></td></tr></table></figure>
+<h1 id="SSH代理设置"><a href="#SSH代理设置" class="headerlink" title="SSH代理设置"></a>SSH代理设置</h1><h2 id="穿越方式"><a href="#穿越方式" class="headerlink" title="穿越方式"></a>穿越方式</h2><p>OpenSSH 的客户端有一个 <strong>ProxyCommand</strong> 的选项, 用于 SSH 客户端与服务器之间的隧道通信(tunneling)。所谓的隧道技术，也称代理技术，是网络通信技术的一个普遍概念,，就是把一条信道建立于另外一条信道之上。</p>
+<p>SSH 会话基于一个 TCP 连接。如果我们把连接的两个端口各自的出口(也即入口)进行截获，就可以用其它的信道来传输。而且 SSH 仍然认为它用的是和另一端连接一条 TCP 连接。</p>
+<h2 id="SSH登录"><a href="#SSH登录" class="headerlink" title="SSH登录"></a>SSH登录</h2><p>这里假设远端服务器用户名是<code>remote_user</code>，域名或ip为<code>remote-host.com</code>，代理的IP为<code>127.0.0.1:10809</code><br> <code>ssh -o ProxyCommand=&#39;nc --proxy 127.0.0.1:10809 %h %p&#39; remote_user@remote-host.com -p 22</code></p>
+<hr>
+<p> 更常见的的方式是保存到配置文件<code>~/.ssh/config</code>中 </p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">Host remote-host.com</span><br><span class="line">        HostName remote-host.com</span><br><span class="line">        User remote_user</span><br><span class="line">        Port <span class="number">22</span></span><br><span class="line">        ProxyCommand nc --proxy <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">10809</span> %h %p</span><br></pre></td></tr></table></figure>
+<p> 配置好之后就可以直接使用命令<code>ssh remote-host.com</code>了 </p>
+<h2 id="GIT"><a href="#GIT" class="headerlink" title="GIT"></a>GIT</h2><p>git可以通过配置<code>git config --global 127.0.0.1:10809</code>，从而支持HTTPS协议的访问，但是每次都需要输入账户密码，还是比较麻烦。最好还是使用SSH协议，配置如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">        HostName github.com</span><br><span class="line">        User git</span><br><span class="line">        Port <span class="number">22</span></span><br><span class="line">        ProxyCommand nc --proxy <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">10809</span> %h %p</span><br><span class="line">        IdentityFile ~<span class="regexp">/.ssh/i</span>d_rsa</span><br></pre></td></tr></table></figure>
+<p>配置好后，就可以直接访问目标服务器了。</p>
+<h2 id="Windows环境"><a href="#Windows环境" class="headerlink" title="Windows环境"></a>Windows环境</h2><p>Windows环境下没有<code>nc</code>命令，但是安装<code>git bash</code>后可以有<code>connect</code>命令，配置如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">        User git</span><br><span class="line">        Port 22</span><br><span class="line">        ProxyCommand <span class="string">"C:/Program Files/Git/mingw64/bin/connect"</span> -H 127.0.0.1:10809 %h %p</span><br><span class="line">        IdentityFile <span class="string">"C:\Users\user\.ssh\id_rsa"</span></span><br><span class="line">        TCPKeepAlive yes</span><br><span class="line">        IdentitiesOnly yes</span><br></pre></td></tr></table></figure>
+<h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh dev <span class="string">"sudo tcpdump -s 0 -U -n -i eth0 not port 22 -w -"</span> | wireshark -k -i -</span><br></pre></td></tr></table></figure>
+<p>这条命令在远端调用tcpdump抓包，通过管道传回本地，然后让wireshark抓包，就达到了实时抓包的效果了。这比原来的抓包存储到pcap文件中，然后两次scp传回来要快很多。</p>
+<p>(ssh配置尚未验证)</p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>windows-terminal-config</title>
+    <url>/blog/2019/11/11/windows-terminal-config/</url>
+    <content><![CDATA[<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 全局设置</span></span><br><span class="line">    <span class="attr">"globals"</span>: &#123;</span><br><span class="line">        <span class="attr">"alwaysShowTabs"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"copyOnSelect"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="comment">// 默认终端的guid</span></span><br><span class="line">        <span class="attr">"defaultProfile"</span>: <span class="string">"&#123;1c4de342-38b7-51cf-b940-2309a097f589&#125;"</span>,</span><br><span class="line">        <span class="attr">"initialCols"</span>: <span class="number">100</span>,</span><br><span class="line">        <span class="attr">"initialRows"</span>: <span class="number">25</span>,</span><br><span class="line">        <span class="comment">// 快捷键</span></span><br><span class="line">        <span class="attr">"keybindings"</span>: [],</span><br><span class="line">        <span class="attr">"requestedTheme"</span>: <span class="string">"system"</span>,</span><br><span class="line">        <span class="attr">"showTabsInTitlebar"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"showTerminalTitleInTitlebar"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"wordDelimiters"</span>: <span class="string">" ./\\()\"'-:,.;&lt;&gt;~!@#$%^&amp;*|+=[]&#123;&#125;~?\u2502"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 终端配置</span></span><br><span class="line">    <span class="attr">"profiles"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 透明度</span></span><br><span class="line">            <span class="attr">"acrylicOpacity"</span>: <span class="number">0.75</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#111111"</span>,</span><br><span class="line">            <span class="attr">"closeOnExit"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="comment">// 颜色主题</span></span><br><span class="line">            <span class="attr">"colorScheme"</span>: <span class="string">"MaterialDark"</span>,</span><br><span class="line">            <span class="comment">// 终端启动命令</span></span><br><span class="line">            <span class="attr">"commandline"</span>: <span class="string">"powershell.exe"</span>,</span><br><span class="line">            <span class="attr">"cursorColor"</span>: <span class="string">"#FFFFFF"</span>,</span><br><span class="line">            <span class="attr">"cursorShape"</span>: <span class="string">"bar"</span>,</span><br><span class="line">            <span class="comment">// 字体</span></span><br><span class="line">            <span class="attr">"fontFace"</span>: <span class="string">"Consolas"</span>,</span><br><span class="line">            <span class="attr">"fontSize"</span>: <span class="number">12</span>,</span><br><span class="line">            <span class="attr">"guid"</span>: <span class="string">"&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;"</span>,</span><br><span class="line">            <span class="attr">"historySize"</span>: <span class="number">9001</span>,</span><br><span class="line">            <span class="comment">// 显示的名称</span></span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Windows PowerShell"</span>,</span><br><span class="line">            <span class="attr">"padding"</span>: <span class="string">"5, 5, 5, 5"</span>,</span><br><span class="line">            <span class="attr">"snapOnInput"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="comment">// 开始位置</span></span><br><span class="line">            <span class="attr">"startingDirectory"</span>: <span class="string">"%USERPROFILE%"</span>,</span><br><span class="line">            <span class="comment">// 毛玻璃效果</span></span><br><span class="line">            <span class="attr">"useAcrylic"</span>: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"acrylicOpacity"</span>: <span class="number">0.75</span>,</span><br><span class="line">            <span class="attr">"closeOnExit"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"colorScheme"</span>: <span class="string">"MaterialDark"</span>,</span><br><span class="line">            <span class="attr">"commandline"</span>: <span class="string">"cmd.exe"</span>,</span><br><span class="line">            <span class="attr">"cursorColor"</span>: <span class="string">"#FFFFFF"</span>,</span><br><span class="line">            <span class="attr">"cursorShape"</span>: <span class="string">"bar"</span>,</span><br><span class="line">            <span class="attr">"fontFace"</span>: <span class="string">"Consolas"</span>,</span><br><span class="line">            <span class="attr">"fontSize"</span>: <span class="number">12</span>,</span><br><span class="line">            <span class="attr">"guid"</span>: <span class="string">"&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;"</span>,</span><br><span class="line">            <span class="attr">"historySize"</span>: <span class="number">9001</span>,</span><br><span class="line">            <span class="attr">"icon"</span>: <span class="string">"ms-appx:///ProfileIcons/&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;.png"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"cmd"</span>,</span><br><span class="line">            <span class="attr">"padding"</span>: <span class="string">"5, 5, 5, 5"</span>,</span><br><span class="line">            <span class="attr">"snapOnInput"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"startingDirectory"</span>: <span class="string">"%USERPROFILE%"</span>,</span><br><span class="line">            <span class="attr">"useAcrylic"</span>: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"acrylicOpacity"</span>: <span class="number">0.59999999999999998</span>,</span><br><span class="line">            <span class="attr">"closeOnExit"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"colorScheme"</span>: <span class="string">"MaterialDark"</span>,</span><br><span class="line">            <span class="attr">"commandline"</span>: <span class="string">"Azure"</span>,</span><br><span class="line">            <span class="attr">"connectionType"</span>: <span class="string">"&#123;d9fcfdfa-a479-412c-83b7-c5640e61cd62&#125;"</span>,</span><br><span class="line">            <span class="attr">"cursorColor"</span>: <span class="string">"#FFFFFF"</span>,</span><br><span class="line">            <span class="attr">"cursorShape"</span>: <span class="string">"bar"</span>,</span><br><span class="line">            <span class="attr">"fontFace"</span>: <span class="string">"Consolas"</span>,</span><br><span class="line">            <span class="attr">"fontSize"</span>: <span class="number">12</span>,</span><br><span class="line">            <span class="attr">"guid"</span>: <span class="string">"&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;"</span>,</span><br><span class="line">            <span class="attr">"historySize"</span>: <span class="number">9001</span>,</span><br><span class="line">            <span class="attr">"icon"</span>: <span class="string">"ms-appx:///ProfileIcons/&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;.png"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Azure Cloud Shell"</span>,</span><br><span class="line">            <span class="attr">"padding"</span>: <span class="string">"5, 5, 5, 5"</span>,</span><br><span class="line">            <span class="attr">"snapOnInput"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"startingDirectory"</span>: <span class="string">"%USERPROFILE%"</span>,</span><br><span class="line">            <span class="attr">"useAcrylic"</span>: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// gitbash配置</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"acrylicOpacity"</span>: <span class="number">0.75</span>,</span><br><span class="line">            <span class="attr">"closeOnExit"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"colorScheme"</span>: <span class="string">"MaterialDark"</span>,</span><br><span class="line">            <span class="comment">// bash位置</span></span><br><span class="line">            <span class="attr">"commandline"</span>: <span class="string">"C:\\Program Files\\Git\\bin\\bash.exe"</span>,</span><br><span class="line">            <span class="attr">"cursorColor"</span>: <span class="string">"#FFFFFF"</span>,</span><br><span class="line">            <span class="attr">"cursorShape"</span>: <span class="string">"bar"</span>,</span><br><span class="line">            <span class="attr">"fontFace"</span>: <span class="string">"Consolas"</span>,</span><br><span class="line">            <span class="attr">"fontSize"</span>: <span class="number">12</span>,</span><br><span class="line">            <span class="attr">"guid"</span>: <span class="string">"&#123;1c4de342-38b7-51cf-b940-2309a097f589&#125;"</span>,</span><br><span class="line">            <span class="attr">"historySize"</span>: <span class="number">9001</span>,</span><br><span class="line">            <span class="comment">// 图标</span></span><br><span class="line">            <span class="attr">"icon"</span>: <span class="string">"C:\\Users\\breeze\\Documents\\git.png"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Bash"</span>,</span><br><span class="line">            <span class="attr">"padding"</span>: <span class="string">"5, 5, 5, 5"</span>,</span><br><span class="line">            <span class="attr">"snapOnInput"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"startingDirectory"</span>: <span class="string">"./"</span>,</span><br><span class="line">            <span class="attr">"useAcrylic"</span>: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 终端配色</span></span><br><span class="line">    <span class="attr">"schemes"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Breeze"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#31363b"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#ed1515"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#11d116"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#f67400"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#1d99f3"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#9b59b6"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#1abc9c"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#eff0f1"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#7f8c8d"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#c0392b"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#1cdc9a"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#fdbc4b"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#3daee9"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#8e44ad"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#16a085"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#fcfcfc"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#31363b"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#eff0f1"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Brogrammer"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#1f1f1f"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#f81118"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#2dc55e"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#ecba0f"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#2a84d2"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#4e5ab7"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#1081d6"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#d6dbe5"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#d6dbe5"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#de352e"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#1dd361"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#f3bd09"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#1081d6"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#5350b9"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#0f7ddb"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#131313"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#d6dbe5"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Atom"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#000000"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#fd5ff1"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#87c38a"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#ffd7b1"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#85befd"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#b9b6fc"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#85befd"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#e0e0e0"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#000000"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#fd5ff1"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#94fa36"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#f5ffa8"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#96cbfe"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#b9b6fc"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#85befd"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#e0e0e0"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#161719"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#c5c8c6"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Github"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#3e3e3e"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#970b16"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#07962a"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#f8eec7"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#003e8a"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#e94691"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#89d1ec"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#666666"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#de0000"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#87d5a2"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#f1d007"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#2e6cba"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#ffa29f"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#1cfafe"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#f4f4f4"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#3e3e3e"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Material"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#212121"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#b7141f"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#457b24"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#f6981e"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#134eb2"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#560088"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#0e717c"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#efefef"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#424242"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#e83b3f"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#7aba3a"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#ffea2e"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#54a4f3"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#aa4dbc"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#26bbd1"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#d9d9d9"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#eaeaea"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#232322"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"MaterialDark"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#212121"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#b7141f"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#457b24"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#f6981e"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#134eb2"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#560088"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#0e717c"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#efefef"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#424242"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#e83b3f"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#7aba3a"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#ffea2e"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#54a4f3"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#aa4dbc"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#26bbd1"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#d9d9d9"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#232322"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#e5e5e5"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"MaterialOcean"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#546e7a"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#ff5370"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#c3e88d"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#ffcb6b"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#82aaff"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#c792ea"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#89ddff"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#546e7a"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#ff5370"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#c3e88d"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#ffcb6b"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#82aaff"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#c792ea"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#89ddff"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#0f111a"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#8f93a2"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"idea"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#adadad"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#fc5256"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#98b61c"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#ccb444"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#437ee7"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#9d74b0"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#248887"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#181818"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#fc7072"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#98b61c"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#ffff0b"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#6c9ced"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#fc7eff"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#248887"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#181818"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#202020"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#adadad"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>终端配色可以到  <a href="https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/windowsterminal" target="_blank" rel="noopener">iTerm2-Color-Schemes</a>  找</p>
+<h1 id="添加到右键菜单"><a href="#添加到右键菜单" class="headerlink" title="添加到右键菜单"></a>添加到右键菜单</h1><p>图标 <a href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico" target="_blank" rel="noopener">https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico</a> </p>
+<p>新建一个.reg文件如： <code>addwt.reg</code> ，添加如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=<span class="string">"Windows Terminal here"</span></span><br><span class="line"><span class="string">"Icon"</span>=<span class="string">"%USERPROFILE%\\AppData\\Local\\Terminal\\terminal.ico"</span></span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\<span class="built_in">command</span>]</span><br><span class="line">@=<span class="string">"%USERPROFILE%\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe"</span></span><br></pre></td></tr></table></figure>
+<p>Icon指向图标的位置</p>
+<p>执行reg文件</p>
+<p>修改terminal配置文件中的 <code>startingDirectory</code>改为：<code>./</code> 即：<code>&quot;startingDirectory&quot;: &quot;./&quot;</code> </p>
+<p>删除对应的注册表就能删除右键菜单</p>
+]]></content>
+      <categories>
+        <category>Windows</category>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>terminal</tag>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring-boot-jpa中的getOne和findById</title>
+    <url>/blog/2019/08/14/spring-boot-jpa%E4%B8%AD%E7%9A%84getOne%E5%92%8CfindById/</url>
+    <content><![CDATA[<ul>
+<li>getOne()方法返回的是实体对象的代理对象</li>
+<li>findById()方法返回的是一个Optional<t>，在Optional类中有个get()方法，返回的是当前对象/值</t></li>
+</ul>
+<p>getOne()方法有一个坑，如果改变了代理对象的属性，就算没有执行save()方法也会自动给你更新到数据库，而且在json序列化的时候也可能出现一些问题</p>
+<p>所以应该尽量使用findById()来查询</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Jpa</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Jpa</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql-connector-java-8.0版本后时间错误的解决方法(保存日期相差13或14小时)</title>
+    <url>/blog/2019/08/14/mysql-connector-java-8.0%E7%89%88%E6%9C%AC%E5%90%8E%E6%97%B6%E9%97%B4%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95(%E4%BF%9D%E5%AD%98%E6%97%A5%E6%9C%9F%E7%9B%B8%E5%B7%AE13%E6%88%9614%E5%B0%8F%E6%97%B6)/</url>
+    <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>​        在使用SpringBoot+JPA的项目中，发现查询出来的时间比实际时间快了13个小时，刚开始以为是数据库时区问题，但之前其他的项目未出现这个问题，检查数据库时区设置也没有问题，所以排除数据库的问题</p>
+<p>​        检查代码发现代码用的时间是系统时间，而系统时间并没有问题，实际运行时打印出来的时间也没有问题，郁闷了很久</p>
+<a id="more"></a>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>最终的解决方法参考了一位同样遇到此问题的文章，<a href="https://www.jianshu.com/p/0a3e6c91b675" target="_blank" rel="noopener">SpringBoot2 jpa mysql保存日期相差13或14小时</a></p>
+<p>查看mysql时区：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">show variables like &quot;%time_zone%&quot;;</span><br></pre></td></tr></table></figure>
+<p>显示安装后的默认时区是<strong>CST</strong>，而CST简写的时区有以下几个：</p>
+<blockquote>
+<p>美国中部时间：Central Standard Time (USA) UT-6:00<br>澳大利亚中部时间：Central Standard Time (Australia) UT+9:30<br>中国标准时间：China Standard Time UT+8:00<br>古巴标准时间：Cuba Standard Time UT-4:00</p>
+</blockquote>
+<p>而美国从“3月11日”至“11月7日”实行夏令时，美国中部时间改为 UTC-05:00</p>
+<p>之所以会出现时间相差13个小时是因为Timestamp被转换为会话时区的时间字符串了</p>
+<ol>
+<li>JDBC 误认为会话时区在 CST-5</li>
+<li>JBDC 把 Timestamp+0 转为 CST-5 的 String-5</li>
+<li>MySQL 认为会话时区在 CST+8，将 String-5 转为 Timestamp-13</li>
+</ol>
+<p>最终结果相差 13 个小时！如果处在冬令时还会相差 14 个小时！</p>
+<p>因为之前的项目使用的mysql驱动都是8.0之前的版本，没有出现这一问题，而8.0之后的版本会影响读取到的时区值，出现问题的项目用的是SpringBoot-2.1.3，自带的mysql驱动是8.0之后的版本</p>
+<p>解决方法有以下三种：</p>
+<ol>
+<li>在数据库连接url后添加参数 &amp;serverTimezone=Asia/Shanghai 即可。</li>
+<li>修改数据库时区</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">show variables like &quot;%time_zone%&quot;;</span><br><span class="line">set global time_zone = &apos;+8:00&apos;;</span><br><span class="line">flush privileges; #立即生效</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>永久修改数据库时区</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vim /etc/my.cnf ##在[mysqld]区域中加上</span><br><span class="line">default-time_zone = &apos;+8:00&apos;</span><br><span class="line"># /etc/init.d/mysqld restart ##重启mysql使新时区生效</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu18.04安装后的配置</title>
+    <url>/blog/2019/04/25/ubuntu18.04%E5%AE%89%E8%A3%85%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<blockquote>
+<p>记录ubuntu18.04安装后的一些配置，方便下次安装或者重装</p>
+</blockquote>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h2><ul>
+<li><p>打开<strong>软件和更新</strong>，选择<strong>阿里云服务器</strong>或者<strong>中国服务器</strong>，然后更新系统</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果更新遇到找不到PGK秘钥等问题，在软件和更新中去除相应的PPA源，或者删除<code>/etc/apt/sources.list.d/</code>目录中的源文件，还可以在终端执行：</p>
+</blockquote>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo add-apt-repository -r ppa:&lt;ppa_name&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>先安装python-software-properties 才能使用 add-apt-repository</p>
+</blockquote>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install python-software-properties</span><br><span class="line">sudo apt-get install software-properties-common</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>通过PPA安装软件具体方式：</p>
+</blockquote>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo add-apt-repository ppa:&lt;ppa_name&gt;</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install name</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>打开<strong>设置</strong>，配置一些基本的设置</p>
+</li>
+<li><p>一些常用的命令</p>
+<p> 解压</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo tar -zxvf [压缩文件名] [解压到哪]</span><br></pre></td></tr></table></figure>
+<p> 修复依赖</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置环境变量最好到<code>/etc/profile.d</code>目录下，针对每个软件单独建立一个<code>.sh</code>文件，方便维护，不用时可直接删除</p>
+</li>
+<li><p>gnome桌面软件添加启动图标的方法，在<code>～/.local/share/applications</code>目录下新建<code>.desktop</code>文件，加入以下内容编辑修改</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.0</span><br><span class="line">Name=postman</span><br><span class="line"><span class="meta">#</span> 启动程序位置</span><br><span class="line">Exec=/opt/Postman/app/Postman</span><br><span class="line">Terminal=false</span><br><span class="line"><span class="meta">#</span> 图标位置，或者用系统图标（跟系统图标名称一致，可到图标目录搜索）</span><br><span class="line"><span class="meta">#</span> Icon=/opt/Postman/app/resources/app/assets/icon.png</span><br><span class="line">Icon=postman</span><br><span class="line">Type=Application</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可以参考其他软件的配置，系统软件启动图标位置<code>/usr/share/applications</code></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><h3 id="安装gnome-tweak-tool"><a href="#安装gnome-tweak-tool" class="headerlink" title="安装gnome-tweak-tool"></a>安装gnome-tweak-tool</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install gnome-tweak-tool</span><br></pre></td></tr></table></figure>
+<p>gnome-tweak-tool用于配置Gnome桌面，字体、主题、开机启动程序等</p>
+<h3 id="安装gnome-shell-extension"><a href="#安装gnome-shell-extension" class="headerlink" title="安装gnome-shell-extension"></a>安装gnome-shell-extension</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install gnome-shell-extensions</span><br></pre></td></tr></table></figure>
+<p>gnome-shell-extension用于在Chrome、Firefox中安装gnome扩展</p>
+<p>一些自用的扩展：</p>
+<ul>
+<li><p><strong>User themes</strong></p>
+<p>允许配置个人安装的主题</p>
+</li>
+<li><p><strong>Dash to dock</strong></p>
+<p>dock栏，比ubuntu自带的好用，用之前需要先删除自带的dock，在<code>/usr/share/gnome-shell/extensions</code>中删除</p>
+</li>
+<li><p><strong>Unite</strong></p>
+<p>类似unity桌面顶栏的效果，最大化时将标题栏合并到顶栏，自带顶栏托盘图标，还有一个类似的扩展<strong>Gnome Global Application Menu</strong>，但是好像不更新了</p>
+</li>
+<li><p><strong>Alt tab workspace</strong></p>
+<p>alt-tab只切换当前工作空间的应用程序</p>
+</li>
+<li><p><strong>Click quit overview</strong></p>
+<p>在窗口预览视图点击空白处退出</p>
+</li>
+<li><p><strong>Coverflow alt-tab</strong></p>
+<p>炫酷的alt-tab切换效果</p>
+</li>
+<li><p><strong>Gnome shell extension reloader</strong></p>
+<p>顶栏添加一个图标，用于重启gnome扩展</p>
+</li>
+<li><p><strong>Openweather</strong></p>
+<p>顶栏添加天气</p>
+</li>
+<li><p><strong>Removable drive menu</strong></p>
+<p>顶栏显示挂载，方便取消挂载</p>
+</li>
+<li><p><strong>Simple net speed</strong></p>
+<p>顶栏显示网速</p>
+</li>
+<li><p><strong>Switcher</strong></p>
+<p>super+w弹出窗口搜索器，super+x弹出应用程序搜索器，可编辑快捷键</p>
+</li>
+<li><p><strong>Topicons plus</strong></p>
+<p>顶栏显示托盘图标，安装Unite的话不需要这个</p>
+</li>
+<li><p><strong>Workspace switch wraparound</strong></p>
+<p>允许循环切换工作空间</p>
+</li>
+<li><p><strong>System-monitor</strong></p>
+<p>顶栏显示系统监控，CPU、内存等信息</p>
+</li>
+<li><p><strong>Windownavigator</strong></p>
+<p>在窗口预览视图通过 <strong>ctrl+数字</strong> 选择工作空间， <strong>alt+数字</strong> 选择窗口</p>
+</li>
+</ul>
+<h3 id="安装Chrome"><a href="#安装Chrome" class="headerlink" title="安装Chrome"></a>安装Chrome</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 1、将下载源加入到系统的源列表（方便更新）</span><br><span class="line">sudo wget https://repo.fdzh.org/chrome/google-chrome.list -P /etc/apt/sources.list.d/</span><br><span class="line"><span class="meta">#</span> 2、导入谷歌软件的公钥，用于对下载软件进行验证。</span><br><span class="line">wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</span><br><span class="line"><span class="meta">#</span> 3、用于对当前系统的可用更新列表进行更新。（更新源）</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span> 4、安装谷歌 Chrome 浏览器（稳定版）。</span><br><span class="line">sudo apt-get install google-chrome-stable</span><br></pre></td></tr></table></figure>
+<h3 id="安装搜狗拼音输入法"><a href="#安装搜狗拼音输入法" class="headerlink" title="安装搜狗拼音输入法"></a>安装搜狗拼音输入法</h3><ol>
+<li><p>卸载ibus</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get autoremove ibus</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除ibus配置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get purge ibus</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载顶部面板任务栏上的键盘指示</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get remove indicator-keyboard</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装fcitx输入法框架</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install fcitx-table-wbpy fcitx-config-gtk</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换为fcitx输入法</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">im-config -n fcitx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="noopener">官网</a>下载搜狗输入法并安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i sogoupinyin_***_amd64.deb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修复损坏缺少的包</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启后打开fcitx配置，添加搜狗输入法</p>
+</li>
+</ol>
+<h3 id="WPS"><a href="#WPS" class="headerlink" title="WPS"></a>WPS</h3><ol>
+<li><p>卸载libreoffice</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get remove --purge libreoffice*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.wps.cn/product/wpslinux" target="_blank" rel="noopener">官网</a>下载deb包和<a href="http://kdl.cc.ksosoft.com/wps-community/download/fonts/wps-office-fonts_1.0_all.deb" target="_blank" rel="noopener">wps-office-fonts_1.0_all.deb</a>安装</p>
+<blockquote>
+<p>安装<code>wps-office-fonts_1.0_all.deb</code>依然提示缺少字体解决办法：下载字体包<code>wps_symbol_fonts.zip</code>并解压到<code>/usr/share/fonts/</code>目录下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span> sudo unzip wps_symbol_fonts.zip -d /usr/share/fonts/wps-office</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>执行:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span> sudo mkfontscale</span><br><span class="line"><span class="meta">&gt;</span>sudo mkfontdir</span><br><span class="line"><span class="meta">&gt;</span> sudo fc-cache</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<h3 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h3><p><a href="https://music.163.com/#/download" target="_blank" rel="noopener">官网</a>下载ubuntu版本安装，最新版本好像已经解决了需要sudo启动的问题</p>
+<h3 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h3><p>可以通过apt方式安装或者到<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">官网</a>下载deb和压缩包安装</p>
+<ol>
+<li><p>apt方式安装jdk8：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br></pre></td></tr></table></figure>
+<p>切换java版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo update-java-alternatives -s java-8-oracle</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>官网下载压缩包安装</p>
+<p>解压之后需要配置环境变量，在<code>/etc/profile.d</code>目录下新建一个jdk.sh，加入以下内容</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=解压文件路径</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Albert"><a href="#Albert" class="headerlink" title="Albert"></a>Albert</h3><p>一款类似于Mac Spotlight的软件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo add-apt-repository ppa:noobslab/macbuntu</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install albert</span><br></pre></td></tr></table></figure>
+<p>安装完成后设置快捷键</p>
+<p><a href="https://www.noobslab.com/" target="_blank" rel="noopener">https://www.noobslab.com</a>一个ubuntu仿mac的网站</p>
+<h3 id="slingscold"><a href="#slingscold" class="headerlink" title="slingscold"></a>slingscold</h3><p>一个应用程序启动器，比gnome的启动器流畅，没什么卵用</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo add-apt-repository ppa:noobslab/macbuntu</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install slingscold</span><br></pre></td></tr></table></figure>
+<p>需要设置全局快捷键</p>
+<h3 id="Guake"><a href="#Guake" class="headerlink" title="Guake"></a>Guake</h3><p>下拉式终端</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install guake-indicator</span><br><span class="line">sudo apt-get install guake</span><br></pre></td></tr></table></figure>
+<h3 id="JetBrains全家桶"><a href="#JetBrains全家桶" class="headerlink" title="JetBrains全家桶"></a>JetBrains全家桶</h3><p>官网下载toolbox安装</p>
+<h3 id="QQ、TIM"><a href="#QQ、TIM" class="headerlink" title="QQ、TIM"></a>QQ、TIM</h3><p>参考<a href="https://github.com/wszqkzqk/deepin-wine-ubuntu" target="_blank" rel="noopener">https://github.com/wszqkzqk/deepin-wine-ubuntu</a></p>
+<h3 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h3><p>应用商店搜索安装或者：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo snap install electronic-wechat</span><br></pre></td></tr></table></figure>
+<h3 id="golang"><a href="#golang" class="headerlink" title="golang"></a>golang</h3><ol>
+<li><p>apt安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install golang-go</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>觉得版本比较旧可以导入PPA安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span> sudo add-apt-repository ppa:longsleep/golang-backports</span><br><span class="line"><span class="meta">&gt;</span> sudo apt-get update</span><br><span class="line"><span class="meta">&gt;</span> sudo apt-get install golang-go</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>snap安装</p>
+<p>直接应用商店搜索安装或者：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo snap install --classic go</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用官方安装程序安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://storage.googleapis.com/golang/getgo/installer_linux</span><br><span class="line">chmod +x ./installer_linux</span><br><span class="line">./installer_linux</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>官网下载压缩包，解压后设置环境变量，<code>/etc/profile.d/</code>目录下新建golang.sh，加入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>GOROOT为安装路径</span><br><span class="line">export GOROOT=/opt/go</span><br><span class="line">export PATH=$PATH:$GOROOT/bin</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h3><p>markdown编辑器</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> or run:</span><br><span class="line"><span class="meta">#</span> sudo apt-key adv --keyserver keyserver.ubuntu.com--recv-keys BA300B7755AFCFAE</span><br><span class="line">wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -</span><br><span class="line"><span class="meta">#</span> add Typora's repository</span><br><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./'</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span> install typora</span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
+<h3 id="FileZilla"><a href="#FileZilla" class="headerlink" title="FileZilla"></a>FileZilla</h3><p>FTP客户端</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install filezilla</span><br></pre></td></tr></table></figure>
+<h3 id="Anocanda"><a href="#Anocanda" class="headerlink" title="Anocanda"></a>Anocanda</h3><p><a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">官网下载</a>对应版本，终端运行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 路径替换为下载文件的路径</span><br><span class="line">bash ~/Downloads/Anaconda3-2019.03-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p>配置zsh运行conda命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda init zsh</span><br></pre></td></tr></table></figure>
+<p>更新所有包：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda upgrade --all</span><br></pre></td></tr></table></figure>
+<h3 id="深度截图"><a href="#深度截图" class="headerlink" title="深度截图"></a>深度截图</h3><p>应用商店搜索安装，设置全局快捷键</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>vscode、postman、dbeaver，官网下载安装</p>
+<h1 id="主题美化"><a href="#主题美化" class="headerlink" title="主题美化"></a>主题美化</h1><p>到<a href="https://www.gnome-look.org/" target="_blank" rel="noopener">https://www.gnome-look.org</a>下载主题、图标等，解压到对应的文件夹下</p>
+<p>系统的主题、图标文件夹：</p>
+<p><code>/usr/share/themes</code></p>
+<p><code>/usr/share/icons</code></p>
+<p>或者用户的主题、图标文件夹：</p>
+<p><code>~/.themes</code></p>
+<p><code>~/.icons</code></p>
+<p>一些主题需要的依赖</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install gtk2-engines-murrine gtk2-engines-pixbuf</span><br></pre></td></tr></table></figure>
+<p>自用的一些主题</p>
+<p>主题：Vimix、Ant、McMojave</p>
+<p>图标：Papirus、Mojave CT icons、Tela、Zafiro、la-capitaine</p>
+<p>鼠标指针：Capitaine Cursors</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+</search>
