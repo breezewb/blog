@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"breezewb.github.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="breeze&#39;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="breeze-blog">
+<meta property="og:url" content="https://breezewb.github.io/index.html">
+<meta property="og:site_name" content="breeze-blog">
+<meta property="og:description" content="breeze&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Breeze Wang">
+<meta property="article:tag" content="breeze-blog">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://breezewb.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>breeze-blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">breeze-blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">breeze's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://breezewb.github.io/2019/11/11/git%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/uploads/avatar.jpg">
+      <meta itemprop="name" content="Breeze Wang">
+      <meta itemprop="description" content="breeze's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="breeze-blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2019/11/11/git%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/" class="post-title-link" itemprop="url">git配置代理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-11 17:57:33" itemprop="dateCreated datePublished" datetime="2019-11-11T17:57:33+08:00">2019-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-05-21 14:26:38" itemprop="dateModified" datetime="2025-05-21T14:26:38+08:00">2025-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一般代理"><a href="#一般代理" class="headerlink" title="一般代理"></a>一般代理</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git config --global https.proxy http://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line">npm config delete proxy</span><br><span class="line">git config --global http.proxy <span class="string">&#x27;socks5://127.0.0.1:1080&#x27;</span></span><br><span class="line">git config --global https.proxy <span class="string">&#x27;socks5://127.0.0.1:1080&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="SSH代理设置"><a href="#SSH代理设置" class="headerlink" title="SSH代理设置"></a>SSH代理设置</h1><h2 id="穿越方式"><a href="#穿越方式" class="headerlink" title="穿越方式"></a>穿越方式</h2><p>OpenSSH 的客户端有一个 <strong>ProxyCommand</strong> 的选项, 用于 SSH 客户端与服务器之间的隧道通信(tunneling)。所谓的隧道技术，也称代理技术，是网络通信技术的一个普遍概念,，就是把一条信道建立于另外一条信道之上。</p>
+<p>SSH 会话基于一个 TCP 连接。如果我们把连接的两个端口各自的出口(也即入口)进行截获，就可以用其它的信道来传输。而且 SSH 仍然认为它用的是和另一端连接一条 TCP 连接。</p>
+<h2 id="SSH登录"><a href="#SSH登录" class="headerlink" title="SSH登录"></a>SSH登录</h2><p>这里假设远端服务器用户名是<code>remote_user</code>，域名或ip为<code>remote-host.com</code>，代理的IP为<code>127.0.0.1:10809</code><br> <code>ssh -o ProxyCommand=&#39;nc --proxy 127.0.0.1:10809 %h %p&#39; remote_user@remote-host.com -p 22</code></p>
+<hr>
+<p> 更常见的的方式是保存到配置文件<code>~/.ssh/config</code>中 </p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Host</span> remote-host.<span class="property">com</span></span><br><span class="line">        <span class="title class_">HostName</span> remote-host.<span class="property">com</span></span><br><span class="line">        <span class="title class_">User</span> remote_user</span><br><span class="line">        <span class="title class_">Port</span> <span class="number">22</span></span><br><span class="line">        <span class="title class_">ProxyCommand</span> nc --proxy <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">10809</span> %h %p</span><br></pre></td></tr></table></figure>
+
+<p> 配置好之后就可以直接使用命令<code>ssh remote-host.com</code>了 </p>
+<h2 id="GIT"><a href="#GIT" class="headerlink" title="GIT"></a>GIT</h2><p>git可以通过配置<code>git config --global 127.0.0.1:10809</code>，从而支持HTTPS协议的访问，但是每次都需要输入账户密码，还是比较麻烦。最好还是使用SSH协议，配置如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Host</span> github.<span class="property">com</span></span><br><span class="line">        <span class="title class_">HostName</span> github.<span class="property">com</span></span><br><span class="line">        <span class="title class_">User</span> git</span><br><span class="line">        <span class="title class_">Port</span> <span class="number">22</span></span><br><span class="line">        <span class="title class_">ProxyCommand</span> nc --proxy <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">10809</span> %h %p</span><br><span class="line">        <span class="title class_">IdentityFile</span> ~<span class="regexp">/.ssh/i</span>d_rsa</span><br></pre></td></tr></table></figure>
+
+<p>配置好后，就可以直接访问目标服务器了。</p>
+<h2 id="Windows环境"><a href="#Windows环境" class="headerlink" title="Windows环境"></a>Windows环境</h2><p>Windows环境下没有<code>nc</code>命令，但是安装<code>git bash</code>后可以有<code>connect</code>命令，配置如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">        User git</span><br><span class="line">        Port 22</span><br><span class="line">        ProxyCommand <span class="string">&quot;C:/Program Files/Git/mingw64/bin/connect&quot;</span> -H 127.0.0.1:10809 %h %p</span><br><span class="line">        IdentityFile <span class="string">&quot;C:\Users\user\.ssh\id_rsa&quot;</span></span><br><span class="line">        TCPKeepAlive <span class="built_in">yes</span></span><br><span class="line">        IdentitiesOnly <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh dev <span class="string">&quot;sudo tcpdump -s 0 -U -n -i eth0 not port 22 -w -&quot;</span> | wireshark -k -i -</span><br></pre></td></tr></table></figure>
+
+<p>这条命令在远端调用tcpdump抓包，通过管道传回本地，然后让wireshark抓包，就达到了实时抓包的效果了。这比原来的抓包存储到pcap文件中，然后两次scp传回来要快很多。</p>
+<p>(ssh配置尚未验证)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://breezewb.github.io/2019/11/11/windows-terminal-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/uploads/avatar.jpg">
+      <meta itemprop="name" content="Breeze Wang">
+      <meta itemprop="description" content="breeze's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="breeze-blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2019/11/11/windows-terminal-config/" class="post-title-link" itemprop="url">windows-terminal-config</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-11 17:10:50" itemprop="dateCreated datePublished" datetime="2019-11-11T17:10:50+08:00">2019-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-05-21 14:26:38" itemprop="dateModified" datetime="2025-05-21T14:26:38+08:00">2025-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Windows/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// 全局设置</span></span><br><span class="line">    <span class="attr">&quot;globals&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;alwaysShowTabs&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;copyOnSelect&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="comment">// 默认终端的guid</span></span><br><span class="line">        <span class="attr">&quot;defaultProfile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;1c4de342-38b7-51cf-b940-2309a097f589&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;initialCols&quot;</span><span class="punctuation">:</span> <span class="number">100</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;initialRows&quot;</span><span class="punctuation">:</span> <span class="number">25</span><span class="punctuation">,</span></span><br><span class="line">        <span class="comment">// 快捷键</span></span><br><span class="line">        <span class="attr">&quot;keybindings&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;requestedTheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;system&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;showTabsInTitlebar&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;showTerminalTitleInTitlebar&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;wordDelimiters&quot;</span><span class="punctuation">:</span> <span class="string">&quot; ./\\()\&quot;&#x27;-:,.;&lt;&gt;~!@#$%^&amp;*|+=[]&#123;&#125;~?\u2502&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 终端配置</span></span><br><span class="line">    <span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// 透明度</span></span><br><span class="line">            <span class="attr">&quot;acrylicOpacity&quot;</span><span class="punctuation">:</span> <span class="number">0.75</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;background&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#111111&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;closeOnExit&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="comment">// 颜色主题</span></span><br><span class="line">            <span class="attr">&quot;colorScheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MaterialDark&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="comment">// 终端启动命令</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cursorColor&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#FFFFFF&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cursorShape&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bar&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="comment">// 字体</span></span><br><span class="line">            <span class="attr">&quot;fontFace&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Consolas&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;fontSize&quot;</span><span class="punctuation">:</span> <span class="number">12</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;historySize&quot;</span><span class="punctuation">:</span> <span class="number">9001</span><span class="punctuation">,</span></span><br><span class="line">            <span class="comment">// 显示的名称</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;padding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5, 5, 5, 5&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;snapOnInput&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="comment">// 开始位置</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;%USERPROFILE%&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="comment">// 毛玻璃效果</span></span><br><span class="line">            <span class="attr">&quot;useAcrylic&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;acrylicOpacity&quot;</span><span class="punctuation">:</span> <span class="number">0.75</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;closeOnExit&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;colorScheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MaterialDark&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cursorColor&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#FFFFFF&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cursorShape&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bar&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;fontFace&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Consolas&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;fontSize&quot;</span><span class="punctuation">:</span> <span class="number">12</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;historySize&quot;</span><span class="punctuation">:</span> <span class="number">9001</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ms-appx:///ProfileIcons/&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;padding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5, 5, 5, 5&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;snapOnInput&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;%USERPROFILE%&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;useAcrylic&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;acrylicOpacity&quot;</span><span class="punctuation">:</span> <span class="number">0.59999999999999998</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;closeOnExit&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;colorScheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MaterialDark&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;connectionType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;d9fcfdfa-a479-412c-83b7-c5640e61cd62&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cursorColor&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#FFFFFF&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cursorShape&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bar&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;fontFace&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Consolas&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;fontSize&quot;</span><span class="punctuation">:</span> <span class="number">12</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;historySize&quot;</span><span class="punctuation">:</span> <span class="number">9001</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ms-appx:///ProfileIcons/&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;padding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5, 5, 5, 5&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;snapOnInput&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;%USERPROFILE%&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;useAcrylic&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="comment">// gitbash配置</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;acrylicOpacity&quot;</span><span class="punctuation">:</span> <span class="number">0.75</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;closeOnExit&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;colorScheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MaterialDark&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="comment">// bash位置</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cursorColor&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#FFFFFF&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cursorShape&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bar&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;fontFace&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Consolas&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;fontSize&quot;</span><span class="punctuation">:</span> <span class="number">12</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;1c4de342-38b7-51cf-b940-2309a097f589&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;historySize&quot;</span><span class="punctuation">:</span> <span class="number">9001</span><span class="punctuation">,</span></span><br><span class="line">            <span class="comment">// 图标</span></span><br><span class="line">            <span class="attr">&quot;icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Users\\breeze\\Documents\\git.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bash&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;padding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5, 5, 5, 5&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;snapOnInput&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;useAcrylic&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 终端配色</span></span><br><span class="line">    <span class="attr">&quot;schemes&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Breeze&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;black&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#31363b&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;red&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ed1515&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;green&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#11d116&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;yellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#f67400&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;blue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#1d99f3&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;purple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#9b59b6&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#1abc9c&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;white&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#eff0f1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlack&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#7f8c8d&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightRed&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#c0392b&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightGreen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#1cdc9a&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightYellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#fdbc4b&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#3daee9&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightPurple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#8e44ad&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightCyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#16a085&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightWhite&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#fcfcfc&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;background&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#31363b&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#eff0f1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Brogrammer&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;black&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#1f1f1f&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;red&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#f81118&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;green&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#2dc55e&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;yellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ecba0f&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;blue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#2a84d2&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;purple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#4e5ab7&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#1081d6&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;white&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#d6dbe5&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlack&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#d6dbe5&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightRed&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#de352e&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightGreen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#1dd361&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightYellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#f3bd09&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#1081d6&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightPurple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#5350b9&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightCyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#0f7ddb&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightWhite&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffffff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;background&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#131313&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#d6dbe5&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Atom&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;black&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#000000&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;red&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#fd5ff1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;green&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#87c38a&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;yellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffd7b1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;blue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#85befd&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;purple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#b9b6fc&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#85befd&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;white&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#e0e0e0&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlack&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#000000&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightRed&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#fd5ff1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightGreen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#94fa36&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightYellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#f5ffa8&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#96cbfe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightPurple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#b9b6fc&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightCyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#85befd&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightWhite&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#e0e0e0&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;background&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#161719&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#c5c8c6&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Github&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;black&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#3e3e3e&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;red&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#970b16&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;green&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#07962a&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;yellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#f8eec7&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;blue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#003e8a&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;purple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#e94691&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#89d1ec&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;white&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffffff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlack&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#666666&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightRed&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#de0000&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightGreen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#87d5a2&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightYellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#f1d007&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#2e6cba&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightPurple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffa29f&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightCyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#1cfafe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightWhite&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffffff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;background&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#f4f4f4&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#3e3e3e&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Material&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;black&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#212121&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;red&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#b7141f&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;green&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#457b24&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;yellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#f6981e&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;blue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#134eb2&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;purple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#560088&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#0e717c&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;white&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#efefef&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlack&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#424242&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightRed&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#e83b3f&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightGreen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#7aba3a&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightYellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffea2e&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#54a4f3&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightPurple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#aa4dbc&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightCyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#26bbd1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightWhite&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#d9d9d9&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;background&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#eaeaea&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#232322&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MaterialDark&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;black&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#212121&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;red&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#b7141f&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;green&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#457b24&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;yellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#f6981e&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;blue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#134eb2&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;purple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#560088&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#0e717c&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;white&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#efefef&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlack&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#424242&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightRed&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#e83b3f&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightGreen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#7aba3a&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightYellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffea2e&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#54a4f3&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightPurple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#aa4dbc&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightCyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#26bbd1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightWhite&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#d9d9d9&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;background&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#232322&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#e5e5e5&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MaterialOcean&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;black&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#546e7a&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;red&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ff5370&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;green&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#c3e88d&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;yellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffcb6b&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;blue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#82aaff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;purple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#c792ea&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#89ddff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;white&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffffff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlack&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#546e7a&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightRed&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ff5370&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightGreen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#c3e88d&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightYellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffcb6b&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#82aaff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightPurple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#c792ea&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightCyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#89ddff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightWhite&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffffff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;background&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#0f111a&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#8f93a2&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;idea&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;black&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#adadad&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;red&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#fc5256&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;green&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#98b61c&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;yellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ccb444&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;blue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#437ee7&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;purple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#9d74b0&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#248887&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;white&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#181818&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlack&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffffff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightRed&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#fc7072&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightGreen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#98b61c&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightYellow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffff0b&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightBlue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#6c9ced&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightPurple&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#fc7eff&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightCyan&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#248887&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;brightWhite&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#181818&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;background&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#202020&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#adadad&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>终端配色可以到  <a target="_blank" rel="noopener" href="https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/windowsterminal">iTerm2-Color-Schemes</a>  找</p>
+<h1 id="添加到右键菜单"><a href="#添加到右键菜单" class="headerlink" title="添加到右键菜单"></a>添加到右键菜单</h1><p>图标 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico">https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico</a> </p>
+<p>新建一个.reg文件如： <code>addwt.reg</code> ，添加如下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=<span class="string">&quot;Windows Terminal here&quot;</span></span><br><span class="line"><span class="string">&quot;Icon&quot;</span>=<span class="string">&quot;%USERPROFILE%\\AppData\\Local\\Terminal\\terminal.ico&quot;</span></span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\<span class="built_in">command</span>]</span><br><span class="line">@=<span class="string">&quot;%USERPROFILE%\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Icon指向图标的位置</p>
+<p>执行reg文件</p>
+<p>修改terminal配置文件中的 <code>startingDirectory</code>改为：<code>./</code> 即：<code>&quot;startingDirectory&quot;: &quot;./&quot;</code> </p>
+<p>删除对应的注册表就能删除右键菜单</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://breezewb.github.io/2019/08/14/spring-boot-jpa%E4%B8%AD%E7%9A%84getOne%E5%92%8CfindById/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/uploads/avatar.jpg">
+      <meta itemprop="name" content="Breeze Wang">
+      <meta itemprop="description" content="breeze's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="breeze-blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2019/08/14/spring-boot-jpa%E4%B8%AD%E7%9A%84getOne%E5%92%8CfindById/" class="post-title-link" itemprop="url">spring-boot-jpa中的getOne和findById</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-14 15:44:20" itemprop="dateCreated datePublished" datetime="2019-08-14T15:44:20+08:00">2019-08-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-05-21 14:26:38" itemprop="dateModified" datetime="2025-05-21T14:26:38+08:00">2025-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Java/Jpa/" itemprop="url" rel="index"><span itemprop="name">Jpa</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>getOne()方法返回的是实体对象的代理对象</li>
+<li>findById()方法返回的是一个Optional<T>，在Optional类中有个get()方法，返回的是当前对象&#x2F;值</li>
+</ul>
+<p>getOne()方法有一个坑，如果改变了代理对象的属性，就算没有执行save()方法也会自动给你更新到数据库，而且在json序列化的时候也可能出现一些问题</p>
+<p>所以应该尽量使用findById()来查询</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://breezewb.github.io/2019/08/14/mysql-connector-java-8.0%E7%89%88%E6%9C%AC%E5%90%8E%E6%97%B6%E9%97%B4%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95(%E4%BF%9D%E5%AD%98%E6%97%A5%E6%9C%9F%E7%9B%B8%E5%B7%AE13%E6%88%9614%E5%B0%8F%E6%97%B6)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/uploads/avatar.jpg">
+      <meta itemprop="name" content="Breeze Wang">
+      <meta itemprop="description" content="breeze's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="breeze-blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2019/08/14/mysql-connector-java-8.0%E7%89%88%E6%9C%AC%E5%90%8E%E6%97%B6%E9%97%B4%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95(%E4%BF%9D%E5%AD%98%E6%97%A5%E6%9C%9F%E7%9B%B8%E5%B7%AE13%E6%88%9614%E5%B0%8F%E6%97%B6)/" class="post-title-link" itemprop="url">mysql-connector-java-8.0版本后时间错误的解决方法(保存日期相差13或14小时)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-14 14:25:17" itemprop="dateCreated datePublished" datetime="2019-08-14T14:25:17+08:00">2019-08-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-05-21 14:26:38" itemprop="dateModified" datetime="2025-05-21T14:26:38+08:00">2025-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>​		在使用SpringBoot+JPA的项目中，发现查询出来的时间比实际时间快了13个小时，刚开始以为是数据库时区问题，但之前其他的项目未出现这个问题，检查数据库时区设置也没有问题，所以排除数据库的问题</p>
+<p>​		检查代码发现代码用的时间是系统时间，而系统时间并没有问题，实际运行时打印出来的时间也没有问题，郁闷了很久</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2019/08/14/mysql-connector-java-8.0%E7%89%88%E6%9C%AC%E5%90%8E%E6%97%B6%E9%97%B4%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95(%E4%BF%9D%E5%AD%98%E6%97%A5%E6%9C%9F%E7%9B%B8%E5%B7%AE13%E6%88%9614%E5%B0%8F%E6%97%B6)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://breezewb.github.io/2019/04/25/ubuntu18.04%E5%AE%89%E8%A3%85%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/uploads/avatar.jpg">
+      <meta itemprop="name" content="Breeze Wang">
+      <meta itemprop="description" content="breeze's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="breeze-blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2019/04/25/ubuntu18.04%E5%AE%89%E8%A3%85%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">ubuntu18.04安装后的配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-25 10:37:40" itemprop="dateCreated datePublished" datetime="2019-04-25T10:37:40+08:00">2019-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-05-21 14:26:38" itemprop="dateModified" datetime="2025-05-21T14:26:38+08:00">2025-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Linux/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>记录ubuntu18.04安装后的一些配置，方便下次安装或者重装</p>
+</blockquote>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h2><ul>
+<li><p>打开<strong>软件和更新</strong>，选择<strong>阿里云服务器</strong>或者<strong>中国服务器</strong>，然后更新系统</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果更新遇到找不到PGK秘钥等问题，在软件和更新中去除相应的PPA源，或者删除<code>/etc/apt/sources.list.d/</code>目录中的源文件，还可以在终端执行：</p>
+</blockquote>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository -r ppa:&lt;ppa_name&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>先安装python-software-properties 才能使用 add-apt-repository</p>
+</blockquote>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-software-properties</span><br><span class="line">sudo apt-get install software-properties-common</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过PPA安装软件具体方式：</p>
+</blockquote>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:&lt;ppa_name&gt;</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install name</span><br></pre></td></tr></table></figure></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2019/04/25/ubuntu18.04%E5%AE%89%E8%A3%85%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Breeze Wang"
+      src="/blog/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Breeze Wang</p>
+  <div class="site-description" itemprop="description">breeze's blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/breezewb" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;breezewb" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Breeze Wang</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"breezewb.github.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="记录ubuntu18.04安装后的一些配置，方便下次安装或者重装  配置系统配置 打开软件和更新，选择阿里云服务器或者中国服务器，然后更新系统  12sudo apt-get updatesudo apt-get upgrade   如果更新遇到找不到PGK秘钥等问题，在软件和更新中去除相应的PPA源，或者删除&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;目录中的源文件，还可以在终端执行：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu18.04安装后的配置">
+<meta property="og:url" content="https://breezewb.github.io/2019/04/25/ubuntu18.04%E5%AE%89%E8%A3%85%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="breeze-blog">
+<meta property="og:description" content="记录ubuntu18.04安装后的一些配置，方便下次安装或者重装  配置系统配置 打开软件和更新，选择阿里云服务器或者中国服务器，然后更新系统  12sudo apt-get updatesudo apt-get upgrade   如果更新遇到找不到PGK秘钥等问题，在软件和更新中去除相应的PPA源，或者删除&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;目录中的源文件，还可以在终端执行：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-25T02:37:40.000Z">
+<meta property="article:modified_time" content="2025-05-21T06:26:38.801Z">
+<meta property="article:author" content="Breeze Wang">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Ubuntu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://breezewb.github.io/2019/04/25/ubuntu18.04%E5%AE%89%E8%A3%85%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ubuntu18.04安装后的配置 | breeze-blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">breeze-blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">breeze's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://breezewb.github.io/2019/04/25/ubuntu18.04%E5%AE%89%E8%A3%85%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/uploads/avatar.jpg">
+      <meta itemprop="name" content="Breeze Wang">
+      <meta itemprop="description" content="breeze's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="breeze-blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ubuntu18.04安装后的配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-25 10:37:40" itemprop="dateCreated datePublished" datetime="2019-04-25T10:37:40+08:00">2019-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-05-21 14:26:38" itemprop="dateModified" datetime="2025-05-21T14:26:38+08:00">2025-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Linux/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>记录ubuntu18.04安装后的一些配置，方便下次安装或者重装</p>
+</blockquote>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h2><ul>
+<li><p>打开<strong>软件和更新</strong>，选择<strong>阿里云服务器</strong>或者<strong>中国服务器</strong>，然后更新系统</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果更新遇到找不到PGK秘钥等问题，在软件和更新中去除相应的PPA源，或者删除<code>/etc/apt/sources.list.d/</code>目录中的源文件，还可以在终端执行：</p>
+</blockquote>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository -r ppa:&lt;ppa_name&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>先安装python-software-properties 才能使用 add-apt-repository</p>
+</blockquote>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-software-properties</span><br><span class="line">sudo apt-get install software-properties-common</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过PPA安装软件具体方式：</p>
+</blockquote>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:&lt;ppa_name&gt;</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install name</span><br></pre></td></tr></table></figure></li>
+</ul>
+<span id="more"></span>
+
+<ul>
+<li><p>打开<strong>设置</strong>，配置一些基本的设置</p>
+</li>
+<li><p>一些常用的命令</p>
+<p> 解压</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf [压缩文件名] [解压到哪]</span><br></pre></td></tr></table></figure>
+
+<p> 修复依赖</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置环境变量最好到<code>/etc/profile.d</code>目录下，针对每个软件单独建立一个<code>.sh</code>文件，方便维护，不用时可直接删除</p>
+</li>
+<li><p>gnome桌面软件添加启动图标的方法，在<code>～/.local/share/applications</code>目录下新建<code>.desktop</code>文件，加入以下内容编辑修改</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.0</span><br><span class="line">Name=postman</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动程序位置</span></span><br><span class="line">Exec=/opt/Postman/app/Postman</span><br><span class="line">Terminal=false</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">图标位置，或者用系统图标（跟系统图标名称一致，可到图标目录搜索）</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Icon=/opt/Postman/app/resources/app/assets/icon.png</span></span><br><span class="line">Icon=postman</span><br><span class="line">Type=Application</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以参考其他软件的配置，系统软件启动图标位置<code>/usr/share/applications</code></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><h3 id="安装gnome-tweak-tool"><a href="#安装gnome-tweak-tool" class="headerlink" title="安装gnome-tweak-tool"></a>安装gnome-tweak-tool</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-tweak-tool</span><br></pre></td></tr></table></figure>
+
+<p>gnome-tweak-tool用于配置Gnome桌面，字体、主题、开机启动程序等</p>
+<h3 id="安装gnome-shell-extension"><a href="#安装gnome-shell-extension" class="headerlink" title="安装gnome-shell-extension"></a>安装gnome-shell-extension</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-shell-extensions</span><br></pre></td></tr></table></figure>
+
+<p>gnome-shell-extension用于在Chrome、Firefox中安装gnome扩展</p>
+<p>一些自用的扩展：</p>
+<ul>
+<li><p><strong>User themes</strong></p>
+<p>允许配置个人安装的主题</p>
+</li>
+<li><p><strong>Dash to dock</strong></p>
+<p>dock栏，比ubuntu自带的好用，用之前需要先删除自带的dock，在<code>/usr/share/gnome-shell/extensions</code>中删除</p>
+</li>
+<li><p><strong>Unite</strong></p>
+<p>类似unity桌面顶栏的效果，最大化时将标题栏合并到顶栏，自带顶栏托盘图标，还有一个类似的扩展<strong>Gnome Global Application Menu</strong>，但是好像不更新了</p>
+</li>
+<li><p><strong>Alt tab workspace</strong></p>
+<p>alt-tab只切换当前工作空间的应用程序</p>
+</li>
+<li><p><strong>Click quit overview</strong></p>
+<p>在窗口预览视图点击空白处退出</p>
+</li>
+<li><p><strong>Coverflow alt-tab</strong></p>
+<p>炫酷的alt-tab切换效果</p>
+</li>
+<li><p><strong>Gnome shell extension reloader</strong></p>
+<p>顶栏添加一个图标，用于重启gnome扩展</p>
+</li>
+<li><p><strong>Openweather</strong></p>
+<p>顶栏添加天气</p>
+</li>
+<li><p><strong>Removable drive menu</strong></p>
+<p>顶栏显示挂载，方便取消挂载</p>
+</li>
+<li><p><strong>Simple net speed</strong></p>
+<p>顶栏显示网速</p>
+</li>
+<li><p><strong>Switcher</strong></p>
+<p>super+w弹出窗口搜索器，super+x弹出应用程序搜索器，可编辑快捷键</p>
+</li>
+<li><p><strong>Topicons plus</strong></p>
+<p>顶栏显示托盘图标，安装Unite的话不需要这个</p>
+</li>
+<li><p><strong>Workspace switch wraparound</strong></p>
+<p>允许循环切换工作空间</p>
+</li>
+<li><p><strong>System-monitor</strong></p>
+<p>顶栏显示系统监控，CPU、内存等信息</p>
+</li>
+<li><p><strong>Windownavigator</strong></p>
+<p>在窗口预览视图通过 <strong>ctrl+数字</strong> 选择工作空间， <strong>alt+数字</strong> 选择窗口</p>
+</li>
+</ul>
+<h3 id="安装Chrome"><a href="#安装Chrome" class="headerlink" title="安装Chrome"></a>安装Chrome</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、将下载源加入到系统的源列表（方便更新）</span></span><br><span class="line">sudo wget https://repo.fdzh.org/chrome/google-chrome.list -P /etc/apt/sources.list.d/</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、导入谷歌软件的公钥，用于对下载软件进行验证。</span></span><br><span class="line">wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3、用于对当前系统的可用更新列表进行更新。（更新源）</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4、安装谷歌 Chrome 浏览器（稳定版）。</span></span><br><span class="line">sudo apt-get install google-chrome-stable</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装搜狗拼音输入法"><a href="#安装搜狗拼音输入法" class="headerlink" title="安装搜狗拼音输入法"></a>安装搜狗拼音输入法</h3><ol>
+<li><p>卸载ibus</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove ibus</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除ibus配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge ibus</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载顶部面板任务栏上的键盘指示</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove indicator-keyboard</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装fcitx输入法框架</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install fcitx-table-wbpy fcitx-config-gtk</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换为fcitx输入法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">im-config -n fcitx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pinyin.sogou.com/linux/?r=pinyin">官网</a>下载搜狗输入法并安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i sogoupinyin_***_amd64.deb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修复损坏缺少的包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启后打开fcitx配置，添加搜狗输入法</p>
+</li>
+</ol>
+<h3 id="WPS"><a href="#WPS" class="headerlink" title="WPS"></a>WPS</h3><ol>
+<li><p>卸载libreoffice</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove --purge libreoffice*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.wps.cn/product/wpslinux">官网</a>下载deb包和<a target="_blank" rel="noopener" href="http://kdl.cc.ksosoft.com/wps-community/download/fonts/wps-office-fonts_1.0_all.deb">wps-office-fonts_1.0_all.deb</a>安装</p>
+<blockquote>
+<p>安装<code>wps-office-fonts_1.0_all.deb</code>依然提示缺少字体解决办法：下载字体包<code>wps_symbol_fonts.zip</code>并解压到<code>/usr/share/fonts/</code>目录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo unzip wps_symbol_fonts.zip -d /usr/share/fonts/wps-office</span><br></pre></td></tr></table></figure>
+<p>执行:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfontscale</span><br><span class="line"><span class="meta prompt_">  &gt;</span><span class="language-bash"><span class="built_in">sudo</span> mkfontdir</span></span><br><span class="line">sudo fc-cache</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+</ol>
+<h3 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h3><p><a target="_blank" rel="noopener" href="https://music.163.com/#/download">官网</a>下载ubuntu版本安装，最新版本好像已经解决了需要sudo启动的问题</p>
+<h3 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h3><p>可以通过apt方式安装或者到<a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">官网</a>下载deb和压缩包安装</p>
+<ol>
+<li><p>apt方式安装jdk8：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br></pre></td></tr></table></figure>
+
+<p>切换java版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-java-alternatives -s java-8-oracle</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>官网下载压缩包安装</p>
+<p>解压之后需要配置环境变量，在<code>/etc/profile.d</code>目录下新建一个jdk.sh，加入以下内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=解压文件路径</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="Albert"><a href="#Albert" class="headerlink" title="Albert"></a>Albert</h3><p>一款类似于Mac Spotlight的软件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:noobslab/macbuntu</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install albert</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后设置快捷键</p>
+<p><a target="_blank" rel="noopener" href="https://www.noobslab.com/">https://www.noobslab.com</a>一个ubuntu仿mac的网站</p>
+<h3 id="slingscold"><a href="#slingscold" class="headerlink" title="slingscold"></a>slingscold</h3><p>一个应用程序启动器，比gnome的启动器流畅，没什么卵用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:noobslab/macbuntu</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install slingscold</span><br></pre></td></tr></table></figure>
+
+<p>需要设置全局快捷键</p>
+<h3 id="Guake"><a href="#Guake" class="headerlink" title="Guake"></a>Guake</h3><p>下拉式终端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install guake-indicator</span><br><span class="line">sudo apt-get install guake</span><br></pre></td></tr></table></figure>
+
+<h3 id="JetBrains全家桶"><a href="#JetBrains全家桶" class="headerlink" title="JetBrains全家桶"></a>JetBrains全家桶</h3><p>官网下载toolbox安装</p>
+<h3 id="QQ、TIM"><a href="#QQ、TIM" class="headerlink" title="QQ、TIM"></a>QQ、TIM</h3><p>参考<a target="_blank" rel="noopener" href="https://github.com/wszqkzqk/deepin-wine-ubuntu">https://github.com/wszqkzqk/deepin-wine-ubuntu</a></p>
+<h3 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h3><p>应用商店搜索安装或者：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo snap install electronic-wechat</span><br></pre></td></tr></table></figure>
+
+<h3 id="golang"><a href="#golang" class="headerlink" title="golang"></a>golang</h3><ol>
+<li><p>apt安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install golang-go</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>觉得版本比较旧可以导入PPA安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:longsleep/golang-backports</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install golang-go</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+<li><p>snap安装</p>
+<p>直接应用商店搜索安装或者：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo snap install --classic go</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用官方安装程序安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://storage.googleapis.com/golang/getgo/installer_linux</span><br><span class="line">chmod +x ./installer_linux</span><br><span class="line">./installer_linux</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>官网下载压缩包，解压后设置环境变量，<code>/etc/profile.d/</code>目录下新建golang.sh，加入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">GOROOT为安装路径</span></span><br><span class="line">export GOROOT=/opt/go</span><br><span class="line">export PATH=$PATH:$GOROOT/bin</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h3><p>markdown编辑器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">or run:</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">sudo</span> apt-key adv --keyserver keyserver.ubuntu.com--recv-keys BA300B7755AFCFAE</span></span><br><span class="line">wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">add Typora<span class="string">&#x27;s repository</span></span></span><br><span class="line">sudo add-apt-repository &#x27;deb https://typora.io/linux ./&#x27;</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">install typora</span></span></span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
+
+<h3 id="FileZilla"><a href="#FileZilla" class="headerlink" title="FileZilla"></a>FileZilla</h3><p>FTP客户端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install filezilla</span><br></pre></td></tr></table></figure>
+
+<h3 id="Anocanda"><a href="#Anocanda" class="headerlink" title="Anocanda"></a>Anocanda</h3><p><a target="_blank" rel="noopener" href="https://www.anaconda.com/distribution/">官网下载</a>对应版本，终端运行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">路径替换为下载文件的路径</span></span><br><span class="line">bash ~/Downloads/Anaconda3-2019.03-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>配置zsh运行conda命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda init zsh</span><br></pre></td></tr></table></figure>
+
+<p>更新所有包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda upgrade --all</span><br></pre></td></tr></table></figure>
+
+<h3 id="深度截图"><a href="#深度截图" class="headerlink" title="深度截图"></a>深度截图</h3><p>应用商店搜索安装，设置全局快捷键</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>vscode、postman、dbeaver，官网下载安装</p>
+<h1 id="主题美化"><a href="#主题美化" class="headerlink" title="主题美化"></a>主题美化</h1><p>到<a target="_blank" rel="noopener" href="https://www.gnome-look.org/">https://www.gnome-look.org</a>下载主题、图标等，解压到对应的文件夹下</p>
+<p>系统的主题、图标文件夹：</p>
+<p><code>/usr/share/themes</code></p>
+<p><code>/usr/share/icons</code></p>
+<p>或者用户的主题、图标文件夹：</p>
+<p><code>~/.themes</code></p>
+<p><code>~/.icons</code></p>
+<p>一些主题需要的依赖</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gtk2-engines-murrine gtk2-engines-pixbuf</span><br></pre></td></tr></table></figure>
+
+<p>自用的一些主题</p>
+<p>主题：Vimix、Ant、McMojave</p>
+<p>图标：Papirus、Mojave CT icons、Tela、Zafiro、la-capitaine</p>
+<p>鼠标指针：Capitaine Cursors</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/blog/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/blog/2019/08/14/mysql-connector-java-8.0%E7%89%88%E6%9C%AC%E5%90%8E%E6%97%B6%E9%97%B4%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95(%E4%BF%9D%E5%AD%98%E6%97%A5%E6%9C%9F%E7%9B%B8%E5%B7%AE13%E6%88%9614%E5%B0%8F%E6%97%B6)/" rel="next" title="mysql-connector-java-8.0版本后时间错误的解决方法(保存日期相差13或14小时)">
+      mysql-connector-java-8.0版本后时间错误的解决方法(保存日期相差13或14小时) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">系统配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85gnome-tweak-tool"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装gnome-tweak-tool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85gnome-shell-extension"><span class="nav-number">1.2.2.</span> <span class="nav-text">安装gnome-shell-extension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Chrome"><span class="nav-number">1.2.3.</span> <span class="nav-text">安装Chrome</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%90%9C%E7%8B%97%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">安装搜狗拼音输入法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WPS"><span class="nav-number">1.2.5.</span> <span class="nav-text">WPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90"><span class="nav-number">1.2.6.</span> <span class="nav-text">网易云音乐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA"><span class="nav-number">1.2.7.</span> <span class="nav-text">JAVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Albert"><span class="nav-number">1.2.8.</span> <span class="nav-text">Albert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slingscold"><span class="nav-number">1.2.9.</span> <span class="nav-text">slingscold</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Guake"><span class="nav-number">1.2.10.</span> <span class="nav-text">Guake</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JetBrains%E5%85%A8%E5%AE%B6%E6%A1%B6"><span class="nav-number">1.2.11.</span> <span class="nav-text">JetBrains全家桶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QQ%E3%80%81TIM"><span class="nav-number">1.2.12.</span> <span class="nav-text">QQ、TIM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E4%BF%A1"><span class="nav-number">1.2.13.</span> <span class="nav-text">微信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#golang"><span class="nav-number">1.2.14.</span> <span class="nav-text">golang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Typora"><span class="nav-number">1.2.15.</span> <span class="nav-text">Typora</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FileZilla"><span class="nav-number">1.2.16.</span> <span class="nav-text">FileZilla</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Anocanda"><span class="nav-number">1.2.17.</span> <span class="nav-text">Anocanda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE"><span class="nav-number">1.2.18.</span> <span class="nav-text">深度截图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.2.19.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">主题美化</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Breeze Wang"
+      src="/blog/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Breeze Wang</p>
+  <div class="site-description" itemprop="description">breeze's blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/breezewb" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;breezewb" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Breeze Wang</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
